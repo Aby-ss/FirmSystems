@@ -33,7 +33,7 @@ cursor.execute('''
 
 # Insert data into the table
 cursor.execute(f"INSERT INTO Users (Name, Age) VALUES (?, ?)", (name, 25))
-cursor.execute(f"INSERT INTO Users (Name, Age) VALUES (?, ?)", (age, 30))
+cursor.execute(f"INSERT INTO Users (Name, Age) VALUES (?, ?)", (name, 30))
 
 # Commit changes and close the connection
 conn.commit()
