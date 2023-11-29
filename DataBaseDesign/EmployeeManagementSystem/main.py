@@ -12,13 +12,14 @@ import sqlite3
 employee_conn = sqlite3.connect("EmployeeDatabase.db")
 cursor = employee_conn.cursor()
 
-cursor.EXECUTE('''
-               CREATE TABLE IF NOT EXISTS EmployeeDatabase
+cursor.execute('''
+               CREATE TABLE IF NOT EXISTS EmployeeDatabase (
                EmployeeID INTEGER PRIMARY KEY,
                Name TEXT,
                Age INTEGER,
                Role TEXT,
                Salary INTEGER
+               )
                ''')
 
 password = "4556786"
@@ -27,22 +28,38 @@ user_identification = Prompt.ask("Enter Password ")
 
 def add_employee():
     new_employee_name = Prompt.ask("Enter new employee's name ")
-    new_employee_ID = Prompt/ask("Enter new employee's ID ")
+    new_employee_ID = Prompt.ask("Enter new employee's ID ")
     new_employee_age = Prompt.ask("Enter new employee's age ")
-    new_Employee_role = Prompt.ask("Enter new employee's role ")
+    new_employee_role = Prompt.ask("Enter new employee's role ")
     new_employee_salary = Prompt.ask("Enter new employee's salary")
 
-    cursor.EXECUTE(f"INSERT INTO EmployeeDatabase (EmployeeID, Name, Age, Role, Salary) VALUES (?, ?, ?, ?, ?)", (new_employee_ID, new_employee_name, new_employee_age, new_employee_role, new_employee_salary))
+    cursor.execute(f"INSERT INTO EmployeeDatabase (EmployeeID, Name, Age, Role, Salary) VALUES (?, ?, ?, ?, ?)", (new_employee_ID, new_employee_name, new_employee_age, new_employee_role, new_employee_salary))
 
     employee_conn.commit()
     employee_conn.close()
+
+def print_employee_data():
+    cursor.execute("SELECT * FROM EmployeeDatabase")
+    rows = cursor.fetchall()
+    for row in rows:
+        print(row)
+    employee_conn.close()
+
 
 
 if user_identification == password:
     print(Panel("User Authorised!", box=box.SQUARE, border_style="bold green"))
 
     print(Panel.fit("Choose an Option:\n1- Add new employee\n2- Discard employee\n3- Print employee database", box = box.SQUARE, border_style="bold white"))
+
+    option_choice = Prompt.ask("Choose a number as your option ")
+
+    if int(option_choice) == 1:
+        add_employee()
+    elif int(option_choice) == 2:
+        print_employee_data()
 else:
+    
     print(Panel("Incorrect Password", box=box.SQUARE, border_style="bold red"))
 
 
