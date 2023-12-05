@@ -4,13 +4,11 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 def read_template(file_name):
-    """Reads the message template from a JSON file."""
-    with open(file_name, 'r') as file:
+    with open("templatemessages.json", 'r') as file:
         template = json.load(file)
     return template
 
 def send_email(subject, message, sender_email, receiver_email, password):
-    """Sends the email using SMTP."""
     # Set up the MIME
     msg = MIMEMultipart()
     msg['From'] = sender_email
