@@ -1,8 +1,26 @@
 {
   "outreach_messages": {
-    "template_1": [],
-    "template_2": [],
-    "template_3": []
+    "template_1": {
+      "description": "Introducing our service to potential clients.",
+      "subject": "Introduction to Our Service",
+      "product_name": "OurAmazingService",
+      "company_name": "ABC Solutions",
+      "client_name": "Client Name 1"
+    },
+    "template_2": {
+      "description": "Exciting news about our latest product.",
+      "subject": "Exciting News About Our Product",
+      "product_name": "SuperProduct X",
+      "company_name": "XYZ Innovations",
+      "client_name": "Client Name 2"
+    },
+    "template_3": {
+      "description": "Highlighting a new feature of our product.",
+      "subject": "Discover Our New Feature",
+      "product_name": "FeaturePlus",
+      "company_name": "TechCorp Inc.",
+      "client_name": "Client Name 3"
+    }
   }
 }
 
