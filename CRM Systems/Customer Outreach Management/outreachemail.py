@@ -9,12 +9,16 @@ from rich.prompt import Prompt
 from rich.traceback import install
 install(show_locals=True)
 
+with open('templatemessages.json') as fp:
+    messages_Data = json.loads(fp)
+
+
 subject = prompt.ask("Subject of your Email ")
 reciever = prompt.ask("Recipient's name with corresponding prefix (Mr/Mrs) ")
 
 message = """Subject: {subject}
 
-Hi {reciever}, your grade is {grade}"""
+Hi {reciever}, {messages_Data}"""
 from_address = prompt.ask("Your Gmail ")
 password = prompt.ask("Type your password ")
 
