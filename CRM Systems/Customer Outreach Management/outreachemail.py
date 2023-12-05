@@ -4,7 +4,8 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
 def read_template(file_name):
-    with open("templatemessages.json", 'r') as file:
+    """Reads the message template from a JSON file."""
+    with open(file_name, 'r') as file:
         template = json.load(file)
     return template
 
@@ -27,19 +28,24 @@ def send_email(subject, message, sender_email, receiver_email, password):
 
 if __name__ == "__main__":
     # File name containing the message template
-    template_file = 'message_template.json'
+    template_file = 'message_templates.json'
 
     # Read the message template from the file
-    message_template = read_template(template_file)
+    message_templates = read_template(template_file)
+
+    # Extract details from a specific template
+    selected_template = "template_1"
+    template = message_templates['outreach_messages'][selected_template]
 
     # Extract relevant details from the template
-    subject = message_template['subject']
-    product_name = message_template['product_name']
-    company_name = message_template['company_name']
-    client_name = message_template['client_name']
+    description = template['description']
+    subject = template['subject']
+    product_name = template['product_name']
+    company_name = template['company_name']
+    client_name = template['client_name']
 
     # Construct the email message
-    message = f"Dear {client_name},\n\nI hope this email finds you well. At {company_name}, we are excited to introduce our latest product, {product_name}. This innovative solution is designed to...\n\nWarm regards,\nYour Name"
+    message = f"Dear {client_name},\n\n{description}\n\nAt {company_name}, we are excited to introduce our latest product, {product_name}. This innovative solution is designed to...\n\nWarm regards,\nYour Name"
 
     # Email credentials
     sender_email = 'your_email@gmail.com'  # Replace with your email
@@ -48,3 +54,4 @@ if __name__ == "__main__":
 
     # Send the email
     send_email(subject, message, sender_email, receiver_email, password)
+
