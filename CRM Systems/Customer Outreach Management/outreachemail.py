@@ -16,24 +16,4 @@ with open('templatemessages.json') as fp:
 subject = prompt.ask("Subject of your Email ")
 reciever = prompt.ask("Recipient's name with corresponding prefix (Mr/Mrs) ")
 
-message = """Subject: {subject}
-
-Hi {reciever}, {messages_Data}"""
-from_address = prompt.ask("Your Gmail ")
-password = prompt.ask("Type your password ")
-
-context = ssl.create_default_context()
-with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-    server.login(from_address, password)
-    with open("contacts_file.csv") as file:
-        reader = csv.reader(file)
-        next(reader)  # Skip header row
-        for name, email, grade in reader:
-            server.sendmail(
-                from_address,
-                email,
-                message.format(name=name,grade=grade),
-            )
-
-
-
+message = "Subject: {Subject}\n\nHello {reciever},\n{templatemessage_json}"
