@@ -1,7 +1,8 @@
 {
-  "outreach messages": [
-    "template 1": [],
-    "template 2": [],
-    "template 3": []
-  ]
+  "outreach_messages": {
+    "template_1": [],
+    "template_2": [],
+    "template_3": []
+  }
 }
+
