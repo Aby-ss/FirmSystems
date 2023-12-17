@@ -8,8 +8,8 @@ with open('data.json') as f:
 # Email configuration
 smtp_server = 'your_smtp_server'
 smtp_port = 587  # Use appropriate port
-sender_email = 'your_email@example.com'
-password = 'your_password'
+sender_email = 'raoabdulhadi952@gmail.com'
+password = 'hadi@notion2'
 
 # Connect to SMTP server
 server = smtplib.SMTP(smtp_server, smtp_port)
