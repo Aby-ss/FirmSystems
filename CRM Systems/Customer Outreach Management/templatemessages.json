@@ -8,23 +8,23 @@
   "templates": [
     {
       "subject": "Elevate Your Brand's Impact with Compelling Copy",
-      "body": "Hi [Client's Name],\n\nAre you missing out on doubling your sales due to underwhelming messaging? Your [specific aspect] might be the hidden culprit. As a copywriter specializing in [relevant niche], I've helped brands like [mention a success story or well-known brand] boost conversions with engaging content. Let's chat this week?\n\nWarmly,\n[Your Name]"
+      "body": "Hi {{ClientName}},\n\nAre you missing out on doubling your sales due to underwhelming messaging? Your [specific aspect] might be the hidden culprit. As a copywriter specializing in [relevant niche], I've helped brands like [mention a success story or well-known brand] boost conversions with engaging content. Let's chat this week?\n\nWarmly,\n[Your Name]"
     },
     {
       "subject": "Maximize Sales Potential with Captivating Copy",
-      "body": "Hello [Client's Name],\n\nYour brand's potential for growth is immense, yet lackluster writing might be holding you back. As a copywriting expert with a knack for driving conversions, I can help transform your [specific aspect] into sales magnets. Let's discuss amplifying your message?\n\nBest,\n[Your Name]"
+      "body": "Hello {{ClientName}},\n\nYour brand's potential for growth is immense, yet lackluster writing might be holding you back. As a copywriting expert with a knack for driving conversions, I can help transform your [specific aspect] into sales magnets. Let's discuss amplifying your message?\n\nBest,\n[Your Name]"
     },
     {
       "subject": "Unleash Your Sales Potential: Case Study Inside",
-      "body": "Hi [Client's Name],\n\nYou could be missing out on doubling your sales due to ineffective content strategies. Recently, I helped a client double their conversions by optimizing their messaging. Let's explore how similar strategies could elevate your brand. Can we connect soon?\n\nCheers,\n[Your Name]"
+      "body": "Hi {{ClientName}},\n\nYou could be missing out on doubling your sales due to ineffective content strategies. Recently, I helped a client double their conversions by optimizing their messaging. Let's explore how similar strategies could elevate your brand. Can we connect soon?\n\nCheers,\n[Your Name]"
     },
     {
       "subject": "Unlock Sales Growth with Compelling Storytelling",
-      "body": "Hello [Client's Name],\n\nYour brand's story is powerful, yet the impact could be greater. You might be missing opportunities to double your sales due to uninspiring messaging. Let's collaborate to turn your narrative into a sales-driving force. Interested in exploring further?\n\nBest regards,\n[Your Name]"
+      "body": "Hello {{ClientName}},\n\nYour brand's story is powerful, yet the impact could be greater. You might be missing opportunities to double your sales due to uninspiring messaging. Let's collaborate to turn your narrative into a sales-driving force. Interested in exploring further?\n\nBest regards,\n[Your Name]"
     },
     {
       "subject": "Enhance Your Sales Potential with Persuasive Copy",
-      "body": "Hi [Client's Name],\n\nYour industry is ripe for a storytelling revolution. Could your brand's messaging be holding you back from doubling your sales? Let's discuss how strategic copywriting can elevate your brand in this competitive landscape. Can we connect this week?\n\nWarm regards,\n[Your Name]"
+      "body": "Hi {{ClientName}},\n\nYour industry is ripe for a storytelling revolution. Could your brand's messaging be holding you back from doubling your sales? Let's discuss how strategic copywriting can elevate your brand in this competitive landscape. Can we connect this week?\n\nWarm regards,\n[Your Name]"
     }
   ]
 }
