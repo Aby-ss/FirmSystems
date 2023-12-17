@@ -1,31 +1,28 @@
+from email.message import EmailMessage
+import ssl
 import smtplib
-import json
 
-# Load data from JSON file
-with open('data.json') as f:
-    data = json.load(f)
+from rich.traceback import install
+install(show_locals=True)
 
-# Email configuration
-smtp_server = 'your_smtp_server'
-smtp_port = 587  # Use appropriate port
-sender_email = 'raoabdulhadi952@gmail.com'
-password = 'hadi@notion2'
+email_sender = "raoabdulhadi952@gmail.com"
+email_password = "ghin gmab kjfw irdr"
 
-# Connect to SMTP server
-server = smtplib.SMTP(smtp_server, smtp_port)
-server.starttls()
-server.login(sender_email, password)
+email_reciever = "fenaroj221@bayxs.com"
 
-# Iterate through clients and send emails
-for client in data['clients']:
-    for template in data['templates']:
-        # Replace placeholders in the email template
-        email_body = template['body'].replace('{{ClientName}}', client['name'])        
-        # Construct email
-        message = f"Subject: {template['subject']}\\n\\n{email_body}"
+subject = "Email Outreach Client Testing"
+body = """
+Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+"""
 
-        # Send email
-        server.sendmail(sender_email, client['email'], message)
+em = EmailMessage()
+em['From'] = email_sender
+em['To'] = email_reciever
+em['subject'] = subject
+em.set_content(body)
 
-# Quit SMTP server
-server.quit()
+context = ssl.create_default_context()
+
+with smtplib.SMTP_SSL('smtp.gmail.com', 443, context=context) as smtp:
+    smtp.login(email_sender, email_password)
+    smtp.sendmail(email_sender, email_reciever, em.as_string())
