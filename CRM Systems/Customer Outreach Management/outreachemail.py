@@ -1,55 +1,31 @@
-import json
 import smtplib
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
+import json
 
-def read_template(file_name):
-    with open("templatemessages.json", 'r') as file:
-        template = json.load(file)
-    return template
+# Load data from JSON file
+with open('data.json') as f:
+    data = json.load(f)
 
-def send_email(subject, message, sender_email, receiver_email, password):
-    # Set up the MIME
-    msg = MIMEMultipart()
-    msg['From'] = sender_email
-    msg['To'] = receiver_email
-    msg['Subject'] = subject
+# Email configuration
+smtp_server = 'your_smtp_server'
+smtp_port = 587  # Use appropriate port
+sender_email = 'your_email@example.com'
+password = 'your_password'
 
-    # Attach the message to the MIME
-    msg.attach(MIMEText(message, 'plain'))
+# Connect to SMTP server
+server = smtplib.SMTP(smtp_server, smtp_port)
+server.starttls()
+server.login(sender_email, password)
 
-    # Connect to the SMTP server
-    with smtplib.SMTP('smtp.gmail.com', 587) as server:
-        server.starttls()
-        server.login(sender_email, password)
-        server.sendmail(sender_email, receiver_email, msg.as_string())
+# Iterate through clients and send emails
+for client in data['clients']:
+    for template in data['templates']:
+        # Replace placeholders in the email template
+        email_body = template['body'].replace('{{ClientName}}', client['name'])        
+        # Construct email
+        message = f"Subject: {template['subject']}\\n\\n{email_body}"
 
-if __name__ == "__main__":
-    # File name containing the message template
-    template_file = 'message_templates.json'
+        # Send email
+        server.sendmail(sender_email, client['email'], message)
 
-    # Read the message template from the file
-    message_templates = read_template(template_file)
-
-    # Extract details from a specific template
-    selected_template = "template_1"
-    template = message_templates['outreach_messages'][selected_template]
-
-    # Extract relevant details from the template
-    description = template['description']
-    subject = template['subject']
-    product_name = template['product_name']
-    company_name = template['company_name']
-    client_name = template['client_name']
-
-    # Construct the email message
-    message = f"Dear {client_name},\n\n{description}\n\nAt {company_name}, we are excited to introduce our latest product, {product_name}. This innovative solution is designed to...\n\nWarm regards,\nYour Name"
-
-    # Email credentials
-    sender_email = 'your_email@gmail.com'  # Replace with your email
-    password = 'your_password'  # Replace with your password
-    receiver_email = 'client_email@example.com'  # Replace with the client's email
-
-    # Send the email
-    send_email(subject, message, sender_email, receiver_email, password)
-
+# Quit SMTP server
+server.quit()
