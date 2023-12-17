@@ -6,7 +6,7 @@ from rich.traceback import install
 install(show_locals=True)
 
 email_sender = "raoabdulhadi952@gmail.com"
-email_password = "ghin gmab kjfw irdr"
+email_password = "--"
 
 email_reciever = "fenaroj221@bayxs.com"
 
